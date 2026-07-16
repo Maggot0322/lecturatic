@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block titulo %}{{ actividad.titulo }} - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<div class="card card-suave p-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3><i class="bi bi-clipboard-check"></i> {{ actividad.titulo }}</h3>
+    <div class="text-end">
+      <div class="small text-muted">Tiempo</div>
+      <div class="cronometro fs-4" id="cronometro">00:00</div>
+    </div>
+  </div>
+  <p class="text-muted">Módulo {{ modulo.orden }}: {{ modulo.titulo }} &middot; {{ modulo.nivel }}</p>
+  <hr>
+
+  <form method="POST">
+    <input type="hidden" name="tiempo_segundos" id="tiempo_segundos" value="0">
+
+    {# ---------- OPCIÓN MÚLTIPLE ---------- #}
+    {% if tipo == "opcion_multiple" %}
+      {% for p in actividad.preguntas %}
+      <div class="mb-4">
+        <p class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</p>
+        {% for opcion in p.opciones %}
+        <label class="opcion-respuesta d-block" data-grupo="pregunta_{{ loop.index0 }}">
+          <input type="radio" name="pregunta_{{ loop.index0 }}" value="{{ loop.index0 }}" class="form-check-input me-2" required>
+          {{ opcion }}
+        </label>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+    {# ---------- VERDADERO / FALSO ---------- #}
+    {% elif tipo == "verdadero_falso" %}
+      {% for p in actividad.preguntas %}
+      <div class="mb-4">
+        <p class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</p>
+        <label class="opcion-respuesta d-inline-block me-2" data-grupo="pregunta_{{ loop.index0 }}">
+          <input type="radio" name="pregunta_{{ loop.index0 }}" value="true" class="form-check-input me-2" required> Verdadero
+        </label>
+        <label class="opcion-respuesta d-inline-block" data-grupo="pregunta_{{ loop.index0 }}">
+          <input type="radio" name="pregunta_{{ loop.index0 }}" value="false" class="form-check-input me-2" required> Falso
+        </label>
+      </div>
+      {% endfor %}
+
+    {# ---------- COMPLETAR ESPACIOS ---------- #}
+    {% elif tipo == "completar" %}
+      {% for p in actividad.preguntas %}
+      <div class="mb-3">
+        <label class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</label>
+        <input type="text" class="form-control form-control-lg mt-1" name="pregunta_{{ loop.index0 }}" placeholder="Escribe tu respuesta" required>
+      </div>
+      {% endfor %}
+
+    {# ---------- RELACIONAR COLUMNAS ---------- #}
+    {% elif tipo == "relacionar" %}
+      <p class="text-muted">Selecciona la opción de la derecha que corresponde a cada elemento de la izquierda.</p>
+      {% for par in actividad.pares %}
+      <div class="row mb-3 align-items-center">
+        <div class="col-md-4"><span class="badge bg-primary p-2 w-100">{{ par.izquierda }}</span></div>
+        <div class="col-md-1 text-center"><i class="bi bi-arrow-right fs-4"></i></div>
+        <div class="col-md-7">
+          <select class="form-select form-select-lg" name="par_{{ loop.index0 }}" required>
+            <option value="" disabled selected>Selecciona una opción...</option>
+            {% for par2 in actividad.pares|sort(attribute='derecha') %}
+              <option value="{{ par2.derecha }}">{{ par2.derecha }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      {% endfor %}
+
+    {# ---------- ORDENAR SECUENCIA ---------- #}
+    {% elif tipo == "ordenar" %}
+      <p class="text-muted">Escribe el número de orden (1 a {{ actividad.secuencia_correcta|length }}) para cada evento, o selecciona el evento que corresponde a cada posición.</p>
+      {% for i in range(actividad.secuencia_correcta|length) %}
+      <div class="mb-3">
+        <label class="fw-bold">Paso {{ i + 1 }}:</label>
+        <select class="form-select form-select-lg" name="orden_{{ i }}" required>
+          <option value="" disabled selected>Selecciona el evento...</option>
+          {% for evento in actividad.secuencia_correcta|sort %}
+            <option value="{{ evento }}">{{ evento }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% endfor %}
+
+    {# ---------- PREGUNTA ABIERTA ---------- #}
+    {% elif tipo == "pregunta_abierta" %}
+      <p class="alert alert-info"><i class="bi bi-info-circle"></i> Estas preguntas no tienen una única respuesta correcta. Tu maestro(a) revisará tus ideas.</p>
+      {% for p in actividad.preguntas %}
+      <div class="mb-3">
+        <label class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</label>
+        <textarea class="form-control mt-1" name="pregunta_{{ loop.index0 }}" rows="3" placeholder="Escribe tu opinión aquí..." required></textarea>
+      </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="d-flex justify-content-between mt-4">
+      <a href="{{ url_for('ver_modulo', modulo_id=modulo.id) }}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Volver al módulo</a>
+      <button type="submit" class="btn btn-lecturatic btn-lg"><i class="bi bi-send-check"></i> Enviar respuestas</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

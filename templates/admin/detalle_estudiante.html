@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block titulo %}Detalle de {{ estudiante.nombre_completo }} - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<a href="{{ url_for('admin_estudiantes') }}" class="btn btn-outline-secondary btn-sm mb-3"><i class="bi bi-arrow-left"></i> Volver</a>
+
+<div class="card card-suave p-4 mb-4">
+  <h2><i class="bi bi-person-badge"></i> {{ estudiante.nombre_completo }}</h2>
+  <p class="text-muted">Usuario: <b>{{ estudiante.usuario }}</b> &middot; Último acceso: {{ estudiante.ultimo_acceso or "Sin registro" }}</p>
+  <div class="row g-3">
+    <div class="col-md-4"><div class="card p-3 text-center"><i class="bi bi-graph-up text-success fs-3"></i><h4>{{ promedio }}</h4><small>Promedio general</small></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><i class="bi bi-clipboard-data text-primary fs-3"></i><h4>{{ pretest.nota if pretest else "—" }}</h4><small>Pretest</small></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><i class="bi bi-clipboard-check text-warning fs-3"></i><h4>{{ postest.nota if postest else "—" }}</h4><small>Postest</small></div></div>
+  </div>
+</div>
+
+<div class="card card-suave p-4 mb-4">
+  <h5><i class="bi bi-signpost-2"></i> Progreso por módulo</h5>
+  <table class="table">
+    <thead><tr><th>Módulo</th><th>Nivel</th><th>Estado</th><th>Mejor nota</th><th>Avance</th></tr></thead>
+    <tbody>
+      {% for p in progreso %}
+      <tr>
+        <td>{{ p.orden }}. {{ p.titulo }}</td>
+        <td>{{ p.nivel }}</td>
+        <td>
+          {% if p.aprobado %}<span class="badge bg-success">Aprobado</span>
+          {% elif p.desbloqueado %}<span class="badge bg-info text-dark">Disponible</span>
+          {% else %}<span class="badge bg-secondary">Bloqueado</span>{% endif %}
+        </td>
+        <td>{{ p.mejor_nota }}</td>
+        <td>{{ p.porcentaje_avance }}%</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="card card-suave p-4">
+  <h5><i class="bi bi-clock-history"></i> Historial completo de intentos</h5>
+  <div class="table-responsive">
+  <table class="table table-sm">
+    <thead><tr><th>Fecha</th><th>Hora</th><th>Módulo</th><th>Actividad</th><th>Nota</th><th>Aciertos</th><th>Errores</th><th>Tiempo</th><th>Intento #</th></tr></thead>
+    <tbody>
+      {% for i in intentos %}
+      <tr>
+        <td>{{ i.fecha }}</td><td>{{ i.hora }}</td><td>{{ i.modulo_titulo }}</td>
+        <td>{{ i.tipo_actividad.replace('_',' ')|capitalize }}</td>
+        <td><b>{{ i.nota }}</b></td><td>{{ i.aciertos }}</td><td>{{ i.errores }}</td>
+        <td>{{ i.tiempo_segundos }}s</td><td>{{ i.numero_intento }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="9" class="text-center text-muted">Sin intentos registrados aún.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block titulo %}Mi Aventura - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<div class="card card-suave p-4 mb-4">
+  <div class="row align-items-center">
+    <div class="col-md-2 text-center">
+      <div class="icono-circular" style="background:linear-gradient(135deg,#2E7D32,#1565C0); width:90px; height:90px; font-size:2.2rem;">
+        <i class="bi bi-person-fill"></i>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2>¡Hola, {{ session.get('nombre_completo') }}! <i class="bi bi-hand-thumbs-up-fill text-warning"></i></h2>
+      <p class="text-muted mb-2">Sigue avanzando en tu aventura lectora. Aquí está tu progreso:</p>
+      <div class="progreso-lecturatic mb-1">
+        <div class="progress-bar" style="width: {{ porcentaje_general }}%">{{ porcentaje_general }}%</div>
+      </div>
+      <small class="text-muted">{{ modulos_aprobados }} de {{ total_modulos }} módulos aprobados</small>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="row">
+        <div class="col-4">
+          <i class="bi bi-star-fill text-warning fs-3"></i>
+          <div class="fw-bold">{{ gam.puntos if gam else 0 }}</div>
+          <small>Puntos</small>
+        </div>
+        <div class="col-4">
+          <i class="bi bi-award-fill text-primary fs-3"></i>
+          <div class="fw-bold">Nivel {{ gam.nivel if gam else 1 }}</div>
+          <small>Gamer</small>
+        </div>
+        <div class="col-4">
+          <i class="bi bi-graph-up-arrow text-success fs-3"></i>
+          <div class="fw-bold">{{ promedio }}</div>
+          <small>Promedio</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if insignias %}
+  <div class="mt-3">
+    {% for ins in insignias %}
+      <span class="badge bg-warning text-dark badge-nivel me-1"><i class="bi bi-patch-check-fill"></i> {{ ins }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<div class="row mb-4 g-3">
+  <div class="col-md-6">
+    <div class="card card-suave p-3 h-100">
+      <h5><i class="bi bi-clipboard-check"></i> Prueba Diagnóstica (Pretest)</h5>
+      {% if pretest %}
+        <p class="mb-2">Ya la realizaste. Nota obtenida: <b>{{ pretest.nota }}</b></p>
+      {% else %}
+        <p class="text-muted">Antes de empezar, responde esta breve prueba para conocer tu nivel inicial.</p>
+        <a href="{{ url_for('pretest') }}" class="btn btn-lecturatic btn-sm align-self-start">Realizar Pretest</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-suave p-3 h-100">
+      <h5><i class="bi bi-clipboard-data"></i> Prueba Final (Postest)</h5>
+      {% if postest %}
+        <p class="mb-2">¡Ya la completaste! Nota obtenida: <b>{{ postest.nota }}</b></p>
+      {% elif todos_aprobados %}
+        <p class="text-muted">Has completado todos los módulos. ¡Realiza tu prueba final!</p>
+        <a href="{{ url_for('postest') }}" class="btn btn-acento btn-sm align-self-start">Realizar Postest</a>
+      {% else %}
+        <p class="text-muted">Disponible cuando apruebes los 5 módulos.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if todos_aprobados %}
+<div class="card card-suave p-4 mb-4 text-center" style="background:linear-gradient(135deg,#FFF8E1,#FFECB3);">
+  <i class="bi bi-trophy-fill display-3 text-warning trofeo-flotante"></i>
+  <h3 class="mt-2">¡Felicitaciones! Completaste todos los módulos</h3>
+  <p>Descarga tu certificado de logro como reconocimiento a tu esfuerzo.</p>
+  <a href="{{ url_for('certificado') }}" class="btn btn-lecturatic btn-lg align-self-center"><i class="bi bi-file-earmark-medal"></i> Descargar mi Certificado</a>
+</div>
+{% endif %}
+
+<h4 class="mb-3"><i class="bi bi-signpost-2"></i> Mapa de Módulos</h4>
+<div class="row g-4">
+  {% for m in modulos %}
+  <div class="col-md-6 col-lg-4">
+    <div class="card card-suave p-3 h-100 {% if not m.desbloqueado %}modulo-bloqueado{% endif %}">
+      <div class="icono-circular" style="background: {{ ['#4CAF50','#2196F3','#FF9800','#9C27B0','#F44336'][loop.index0 % 5] }};">
+        <i class="bi bi-{{ ['tree','search','chat-square-text','bug','signpost-split'][loop.index0 % 5] }}"></i>
+      </div>
+      <h5 class="text-center">Módulo {{ m.orden }}: {{ m.titulo }}</h5>
+      <p class="text-center text-muted small">{{ m.nivel }}</p>
+      <p class="small">{{ m.descripcion }}</p>
+
+      <div class="progreso-lecturatic mb-2">
+        <div class="progress-bar" style="width: {{ m.porcentaje_avance }}%">{{ m.porcentaje_avance }}%</div>
+      </div>
+
+      {% if m.aprobado %}
+        <span class="badge bg-success mb-2"><i class="bi bi-check-circle-fill"></i> Aprobado &middot; Nota {{ m.mejor_nota }}</span>
+      {% elif m.desbloqueado %}
+        <span class="badge bg-info text-dark mb-2"><i class="bi bi-unlock-fill"></i> Disponible</span>
+      {% else %}
+        <span class="badge bg-secondary mb-2"><i class="bi bi-lock-fill"></i> Bloqueado</span>
+      {% endif %}
+
+      {% if m.desbloqueado %}
+        <a href="{{ url_for('ver_modulo', modulo_id=m.id) }}" class="btn btn-lecturatic mt-auto"><i class="bi bi-play-circle-fill"></i> Continuar</a>
+      {% else %}
+        <button class="btn btn-secondary mt-auto" disabled><i class="bi bi-lock-fill"></i> Bloqueado</button>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

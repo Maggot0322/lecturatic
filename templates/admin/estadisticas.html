@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block titulo %}Estadísticas - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<h2 class="mb-4"><i class="bi bi-bar-chart"></i> Estadísticas de la Plataforma</h2>
+
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card card-suave p-3">
+      <h5>Promedio por módulo</h5>
+      <canvas id="graficoModulos"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-suave p-3">
+      <h5>Nivel de comprensión (promedio)</h5>
+      <canvas id="graficoNiveles"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-suave p-3">
+      <h5>Actividades realizadas por estudiante</h5>
+      <canvas id="graficoActividades"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-suave p-3">
+      <h5>Estudiantes activos vs inactivos (7 días)</h5>
+      <canvas id="graficoActivos"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-suave p-3 text-center">
+      <h5>Tiempo promedio por actividad</h5>
+      <h1 class="text-primary">{{ tiempo_promedio }}s</h1>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block scripts_extra %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+const colores = ['#2E7D32','#1565C0','#FF9800','#9C27B0','#F44336','#00897B'];
+
+new Chart(document.getElementById('graficoModulos'), {
+  type: 'bar',
+  data: {
+    labels: {{ por_modulo | map(attribute='titulo') | list | tojson }},
+    datasets: [{ label: 'Promedio', data: {{ por_modulo | map(attribute='promedio') | list | tojson }}, backgroundColor: colores }]
+  },
+  options: { scales: { y: { min: 0, max: 5 } } }
+});
+
+new Chart(document.getElementById('graficoNiveles'), {
+  type: 'radar',
+  data: {
+    labels: {{ niveles | map(attribute='nivel') | list | tojson }},
+    datasets: [{ label: 'Promedio', data: {{ niveles | map(attribute='promedio') | list | tojson }}, backgroundColor: 'rgba(46,125,50,0.3)', borderColor: '#2E7D32' }]
+  },
+  options: { scales: { r: { min: 0, max: 5 } } }
+});
+
+new Chart(document.getElementById('graficoActividades'), {
+  type: 'bar',
+  data: {
+    labels: {{ actividades_por_estudiante | map(attribute='nombre_completo') | list | tojson }},
+    datasets: [{ label: 'Actividades realizadas', data: {{ actividades_por_estudiante | map(attribute='cantidad') | list | tojson }}, backgroundColor: '#1565C0' }]
+  },
+  options: { indexAxis: 'y' }
+});
+
+new Chart(document.getElementById('graficoActivos'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Activos', 'Inactivos'],
+    datasets: [{ data: [{{ activos }}, {{ inactivos }}], backgroundColor: ['#2E7D32', '#BDBDBD'] }]
+  }
+});
+</script>
+{% endblock %}

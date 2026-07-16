@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo %}Reportes - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<h2 class="mb-4"><i class="bi bi-file-earmark-arrow-down"></i> Reportes Descargables</h2>
+
+<div class="card card-suave p-4">
+  <p class="text-muted">Filtra por fecha o módulo (opcional) y descarga el reporte con nombre, usuario, notas, promedio, fecha, tiempo y porcentaje de avance.</p>
+  <form id="formReportes" class="row g-3 mb-3">
+    <div class="col-md-4">
+      <label class="form-label">Desde</label>
+      <input type="date" class="form-control" name="fecha_inicio">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Hasta</label>
+      <input type="date" class="form-control" name="fecha_fin">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Módulo (ID, opcional)</label>
+      <input type="number" class="form-control" name="modulo_id" min="1" max="5" placeholder="1 a 5">
+    </div>
+  </form>
+
+  <div class="d-flex gap-2 flex-wrap">
+    <button class="btn btn-lecturatic" onclick="descargar('pdf')"><i class="bi bi-file-earmark-pdf"></i> Descargar PDF</button>
+    <button class="btn btn-success" onclick="descargar('excel')"><i class="bi bi-file-earmark-excel"></i> Descargar Excel</button>
+    <button class="btn btn-secondary" onclick="descargar('csv')"><i class="bi bi-file-earmark-spreadsheet"></i> Descargar CSV</button>
+  </div>
+</div>
+
+{% endblock %}
+{% block scripts_extra %}
+<script>
+function descargar(formato) {
+  const form = document.getElementById('formReportes');
+  const params = new URLSearchParams(new FormData(form));
+  // Eliminar parámetros vacíos
+  for (const [key, value] of [...params.entries()]) {
+    if (!value) params.delete(key);
+  }
+  window.location.href = "/admin/reportes/descargar/" + formato + "?" + params.toString();
+}
+</script>
+{% endblock %}

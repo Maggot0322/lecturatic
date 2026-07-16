@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block titulo %}{{ modulo.titulo }} - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<div class="card card-suave p-4 mb-4" data-lectura-voz>
+  <div class="d-flex align-items-center mb-3">
+    <div class="icono-circular me-3" style="background: {{ modulo.color }}; margin:0;">
+      <i class="bi {{ modulo.icono }}"></i>
+    </div>
+    <div>
+      <h2 class="mb-0">Módulo {{ modulo.orden }}: {{ modulo.titulo }}</h2>
+      <span class="badge bg-primary">{{ modulo.nivel }}</span>
+    </div>
+  </div>
+  <p class="lead">{{ modulo.descripcion }}</p>
+
+  <div class="dato-curioso-box mb-4">
+    <i class="bi bi-lightbulb-fill text-warning"></i> <b>¿Sabías qué?</b> {{ modulo.dato_curioso }}
+  </div>
+
+  <h4><i class="bi bi-journal-text"></i> Lectura</h4>
+  <p style="font-size:1.15rem; line-height:1.8;">{{ modulo.texto_lectura }}</p>
+
+  <div class="alert alert-info">
+    <b><i class="bi bi-question-circle"></i> Mientras lees, piensa:</b>
+    <ul class="mb-0">
+      {% for p in modulo.preguntas_durante_lectura %}<li>{{ p }}</li>{% endfor %}
+    </ul>
+  </div>
+
+  <div class="ratio ratio-16x9 mb-4 rounded overflow-hidden shadow-sm">
+    <iframe src="{{ modulo.video_youtube }}" title="Video del módulo" allowfullscreen></iframe>
+  </div>
+
+  <h4><i class="bi bi-translate"></i> Palabras Nuevas</h4>
+  <div class="row mb-4">
+    {% for palabra in modulo.palabras_nuevas %}
+    <div class="col-md-6">
+      <div class="glosario-item">
+        <b>{{ palabra.palabra }}</b>: {{ palabra.significado }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h4><i class="bi bi-lightbulb"></i> Ejemplos Desarrollados</h4>
+  {% for ej in modulo.ejemplos %}
+  <div class="card mb-2 p-3" style="background:#F1F8E9;">
+    <h6>{{ ej.titulo }}</h6>
+    <p class="mb-1"><i class="bi bi-arrow-right-short"></i> {{ ej.explicacion }}</p>
+    <p class="mb-0 text-success"><i class="bi bi-check-circle"></i> {{ ej.solucion }}</p>
+  </div>
+  {% endfor %}
+
+  <h4 class="mt-4"><i class="bi bi-diagram-3"></i> Mapa Conceptual</h4>
+  <div class="d-flex flex-wrap gap-2 mb-4">
+    {% for nodo in modulo.mapa_conceptual %}
+      <span class="badge bg-secondary p-2">{{ nodo }}</span>
+      {% if not loop.last %}<i class="bi bi-arrow-right fs-4 text-muted"></i>{% endif %}
+    {% endfor %}
+  </div>
+
+  <h4><i class="bi bi-book"></i> Glosario</h4>
+  <div class="row mb-4">
+    {% for g in modulo.glosario %}
+    <div class="col-md-6">
+      <div class="glosario-item"><b>{{ g.termino }}</b>: {{ g.definicion }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h4><i class="bi bi-card-text"></i> Resumen</h4>
+  <p>{{ modulo.resumen }}</p>
+
+  <button class="btn btn-outline-secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <i class="bi bi-arrow-repeat"></i> Repasar contenido
+  </button>
+</div>
+
+<h4 class="mb-3"><i class="bi bi-pencil-square"></i> Actividades del Módulo</h4>
+<div class="row g-4">
+  {% for act in modulo.actividades %}
+  <div class="col-md-6">
+    <div class="card card-suave p-3 h-100 text-center">
+      <i class="bi bi-clipboard-check fs-1 text-primary"></i>
+      <h5 class="mt-2">{{ act.titulo }}</h5>
+      <p class="text-muted small">Tipo: {{ act.tipo.replace('_',' ')|capitalize }}</p>
+      <a href="{{ url_for('ver_actividad', modulo_id=modulo.id, actividad_indice=loop.index0) }}" class="btn btn-lecturatic mt-auto">
+        <i class="bi bi-play-fill"></i> Comenzar Actividad
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mt-4">
+  <a href="{{ url_for('estudiante_dashboard') }}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Volver al mapa de módulos</a>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block titulo %}Panel del Docente - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<h2 class="mb-4"><i class="bi bi-speedometer2"></i> Panel del Docente / Administrador</h2>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3 col-6">
+    <div class="card card-suave p-3 text-center">
+      <i class="bi bi-people-fill fs-1 text-primary"></i>
+      <h3>{{ total_estudiantes }}</h3><small>Estudiantes registrados</small>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card card-suave p-3 text-center">
+      <i class="bi bi-clipboard-check fs-1 text-success"></i>
+      <h3>{{ total_intentos }}</h3><small>Actividades realizadas</small>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card card-suave p-3 text-center">
+      <i class="bi bi-graph-up fs-1 text-warning"></i>
+      <h3>{{ promedio_general }}</h3><small>Promedio general</small>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card card-suave p-3 text-center">
+      <i class="bi bi-box-arrow-in-right fs-1 text-info"></i>
+      <h3>{{ ingresos_hoy }}</h3><small>Ingresos hoy</small>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-6">
+    <div class="card card-suave p-3">
+      <h5><i class="bi bi-activity"></i> Estudiantes activos (últimos 7 días)</h5>
+      <h2 class="text-success">{{ estudiantes_activos }} / {{ total_estudiantes }}</h2>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-suave p-3">
+      <h5><i class="bi bi-shield-check"></i> Respaldo de la base de datos</h5>
+      <p class="text-muted small mb-2">Crea una copia de seguridad de toda la información de la investigación.</p>
+      <div class="d-flex gap-2">
+        <form method="POST" action="{{ url_for('admin_crear_respaldo') }}">
+          <button type="submit" class="btn btn-lecturatic btn-sm"><i class="bi bi-cloud-arrow-up"></i> Crear respaldo</button>
+        </form>
+        <a href="{{ url_for('admin_lista_respaldos') }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-archive"></i> Ver respaldos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card card-suave p-3">
+  <h5><i class="bi bi-list-columns-reverse"></i> Bitácora reciente de actividad (logs)</h5>
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <thead><tr><th>Fecha</th><th>Hora</th><th>Estudiante/Usuario</th><th>Acción</th><th>Detalle</th></tr></thead>
+      <tbody>
+        {% for log in ultimos_logs %}
+        <tr>
+          <td>{{ log.fecha }}</td>
+          <td>{{ log.hora }}</td>
+          <td>{{ log.nombre_completo or "—" }}</td>
+          <td><span class="badge bg-secondary">{{ log.accion }}</span></td>
+          <td class="small text-muted">{{ log.detalle }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" class="text-center text-muted">Aún no hay registros de actividad.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titulo %}{{ prueba.titulo }} - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<div class="card card-suave p-4">
+  <h2><i class="bi bi-clipboard-data"></i> {{ prueba.titulo }}</h2>
+  <p class="text-muted">{{ prueba.instrucciones }}</p>
+  <hr>
+  <h5><i class="bi bi-journal-text"></i> Lectura</h5>
+  <p style="font-size:1.1rem; line-height:1.8;">{{ prueba.texto_lectura }}</p>
+  <hr>
+
+  <form method="POST">
+    {% for p in prueba.preguntas %}
+    <div class="mb-4">
+      <p class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</p>
+      {% for opcion in p.opciones %}
+      <label class="opcion-respuesta d-block" data-grupo="pregunta_{{ loop.index0 }}">
+        <input type="radio" name="pregunta_{{ loop.index0 }}" value="{{ loop.index0 }}" class="form-check-input me-2" required>
+        {{ opcion }}
+      </label>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-lecturatic btn-lg"><i class="bi bi-send-check"></i> Enviar respuestas</button>
+  </form>
+</div>
+{% endblock %}

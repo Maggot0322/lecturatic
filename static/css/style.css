@@ -1,0 +1,230 @@
+/* ==========================================================
+   LECTURATIC - Hoja de estilos principal
+   Diseño amigable, colorido y accesible para niños de 5° grado
+   ========================================================== */
+
+:root {
+  --color-primario: #2E7D32;
+  --color-secundario: #1565C0;
+  --color-acento: #FF9800;
+  --color-fondo: #F4F9F4;
+  --color-tarjeta: #FFFFFF;
+  --color-texto: #2B2B2B;
+  --radio-borde: 18px;
+  --sombra-suave: 0 4px 14px rgba(0,0,0,0.08);
+  --fuente-base: 'Baloo 2', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+}
+
+/* ---- Modo oscuro ---- */
+body.tema-oscuro {
+  --color-fondo: #14181C;
+  --color-tarjeta: #1F262B;
+  --color-texto: #EDEDED;
+}
+
+/* ---- Alto contraste ---- */
+body.contraste-alto {
+  --color-primario: #000000;
+  --color-secundario: #000000;
+  --color-acento: #FFD600;
+  --color-fondo: #FFFFFF;
+  --color-tarjeta: #FFFFFF;
+  --color-texto: #000000;
+}
+body.contraste-alto .card, body.contraste-alto .btn {
+  border: 2px solid #000 !important;
+}
+
+/* ---- Tamaños de fuente ajustables ---- */
+body.fuente-grande { font-size: 1.2rem; }
+body.fuente-xgrande { font-size: 1.45rem; }
+
+body {
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background-color .3s ease, color .3s ease;
+}
+
+.navbar-lecturatic {
+  background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+}
+.navbar-lecturatic .navbar-brand, .navbar-lecturatic .nav-link {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.logo-lecturatic {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.card-suave {
+  background-color: var(--color-tarjeta);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+  border: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card-suave:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+}
+
+.btn-lecturatic {
+  border-radius: 50px;
+  padding: 0.65rem 1.6rem;
+  font-weight: 700;
+  border: none;
+  background: linear-gradient(90deg, var(--color-primario), #66BB6A);
+  color: white;
+  transition: transform .15s ease;
+}
+.btn-lecturatic:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+.btn-acento {
+  background: linear-gradient(90deg, var(--color-acento), #FFB74D);
+  color: #4A2C00;
+}
+
+.progreso-lecturatic {
+  height: 22px;
+  border-radius: 50px;
+  background-color: #E0E0E0;
+  overflow: hidden;
+}
+.progreso-lecturatic .progress-bar {
+  background: linear-gradient(90deg, var(--color-acento), var(--color-primario));
+  font-weight: 700;
+}
+
+.badge-nivel {
+  font-size: 0.85rem;
+  padding: 0.4em 0.8em;
+  border-radius: 50px;
+}
+
+.modulo-bloqueado {
+  filter: grayscale(0.85);
+  opacity: 0.65;
+  position: relative;
+}
+.modulo-bloqueado::after {
+  content: "\f4b1";
+  font-family: "bootstrap-icons";
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 1.5rem;
+  color: #757575;
+}
+
+.icono-circular {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  margin: 0 auto 10px auto;
+}
+
+.avatar-estudiante {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  border: 4px solid var(--color-acento);
+  object-fit: cover;
+}
+
+.panel-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2E7D32 0%, #1565C0 100%);
+}
+
+.caja-login {
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  padding: 2.5rem;
+  max-width: 420px;
+  width: 100%;
+}
+
+.trofeo-flotante {
+  animation: flotar 2.4s ease-in-out infinite;
+}
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.confeti {
+  position: fixed;
+  top: -10px;
+  z-index: 3000;
+  animation: caer linear forwards;
+}
+@keyframes caer {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+}
+
+.barra-accesibilidad {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 2000;
+}
+.barra-accesibilidad .btn {
+  border-radius: 50%;
+  width: 52px; height: 52px;
+  box-shadow: var(--sombra-suave);
+}
+
+.glosario-item {
+  border-left: 4px solid var(--color-secundario);
+  padding-left: 12px;
+  margin-bottom: 10px;
+}
+
+.dato-curioso-box {
+  background: #FFF3E0;
+  border-left: 6px solid var(--color-acento);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+body.tema-oscuro .dato-curioso-box { background: #33291a; }
+
+.cronometro {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--color-secundario);
+}
+
+.opcion-respuesta {
+  cursor: pointer;
+  border-radius: 14px;
+  border: 2px solid #E0E0E0;
+  padding: 0.7rem 1rem;
+  transition: all .15s ease;
+}
+.opcion-respuesta:hover {
+  border-color: var(--color-primario);
+  background: #F1F8E9;
+}
+.opcion-respuesta.seleccionada {
+  border-color: var(--color-primario);
+  background: #C8E6C9;
+}
+body.tema-oscuro .opcion-respuesta.seleccionada { background: #2b4a2d; }
+
+footer.footer-lecturatic {
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}

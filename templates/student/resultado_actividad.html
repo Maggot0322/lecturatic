@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %}Resultado - LECTURATIC{% endblock %}
+{% block contenido %}
+
+<div class="card card-suave p-4 text-center">
+  {% if resultado.nota >= 3.5 %}
+    <i class="bi bi-emoji-laughing display-1 text-success trofeo-flotante"></i>
+  {% elif resultado.nota >= 2.5 %}
+    <i class="bi bi-emoji-neutral display-1 text-warning"></i>
+  {% else %}
+    <i class="bi bi-emoji-smile display-1 text-secondary"></i>
+  {% endif %}
+
+  <h2 class="mt-3">Nota obtenida: {{ resultado.nota }} / 5.0</h2>
+  <p class="lead">{{ mensaje }}</p>
+
+  <div class="row justify-content-center g-3 my-3">
+    <div class="col-6 col-md-3">
+      <div class="card p-3"><i class="bi bi-check-circle text-success fs-3"></i><div class="fw-bold">{{ resultado.aciertos }}</div><small>Aciertos</small></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card p-3"><i class="bi bi-x-circle text-danger fs-3"></i><div class="fw-bold">{{ resultado.errores }}</div><small>Errores</small></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card p-3"><i class="bi bi-clock text-primary fs-3"></i><div class="fw-bold">{{ tiempo_segundos }}s</div><small>Tiempo</small></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card p-3"><i class="bi bi-arrow-repeat text-secondary fs-3"></i><div class="fw-bold">#{{ numero_intento }}</div><small>Intento</small></div>
+    </div>
+  </div>
+
+  <div class="alert alert-info text-start">
+    <b><i class="bi bi-lightbulb"></i> Recomendación para ti:</b> {{ recomendacion }}
+  </div>
+
+  {% if aprobado %}
+  <div class="alert alert-success">
+    <i class="bi bi-unlock-fill"></i> ¡Aprobaste el módulo "{{ modulo.titulo }}" con promedio {{ promedio_modulo }}! Se desbloqueó el siguiente módulo.
+  </div>
+  {% endif %}
+
+  <div class="d-flex justify-content-center gap-2 mt-3">
+    <a href="{{ url_for('ver_modulo', modulo_id=modulo.id) }}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Volver al módulo</a>
+    <a href="{{ url_for('estudiante_dashboard') }}" class="btn btn-lecturatic"><i class="bi bi-house-door"></i> Ir a Mi Aventura</a>
+  </div>
+</div>
+
+{% endblock %}
+{% block scripts_extra %}
+{% if resultado.nota >= 3.5 %}
+<script>document.addEventListener("DOMContentLoaded", lanzarConfeti);</script>
+{% endif %}
+{% endblock %}
