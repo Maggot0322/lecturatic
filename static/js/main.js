@@ -25,16 +25,24 @@ function iniciarCronometro() {
 document.addEventListener("DOMContentLoaded", iniciarCronometro);
 
 // ---------- Selección visual de opciones (radio buttons estilizados) ----------
+// Se basa directamente en el atributo "name" del radio real (la misma fuente
+// de verdad que usa el navegador para agrupar los radios), en vez de un
+// atributo separado (data-grupo) que podría quedar desincronizado.
 document.addEventListener("click", function (e) {
   const opcion = e.target.closest(".opcion-respuesta");
   if (!opcion) return;
-  const grupo = opcion.dataset.grupo;
-  document.querySelectorAll(`.opcion-respuesta[data-grupo="${grupo}"]`).forEach((el) => {
-    el.classList.remove("seleccionada");
-  });
-  opcion.classList.add("seleccionada");
   const radio = opcion.querySelector('input[type="radio"]');
-  if (radio) radio.checked = true;
+  if (!radio) return;
+
+  // Solo des-seleccionar visualmente las opciones que comparten el mismo
+  // "name" (es decir, las opciones de la MISMA pregunta).
+  document.querySelectorAll('input[type="radio"][name="' + radio.name + '"]').forEach((r) => {
+    const contenedor = r.closest(".opcion-respuesta");
+    if (contenedor) contenedor.classList.remove("seleccionada");
+  });
+
+  radio.checked = true;
+  opcion.classList.add("seleccionada");
 });
 
 // ---------- Celebración con confeti al aprobar ----------
