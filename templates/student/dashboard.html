@@ -50,12 +50,12 @@
 <div class="row mb-4 g-3">
   <div class="col-md-6">
     <div class="card card-suave p-3 h-100">
-      <h5><i class="bi bi-clipboard-check"></i> Prueba Diagnóstica (Pretest)</h5>
+      <h5><i class="bi bi-clipboard-check"></i> Saberes Previos </h5>
       {% if pretest %}
         <p class="mb-2">Ya la realizaste. Nota obtenida: <b>{{ pretest.nota }}</b></p>
       {% else %}
-        <p class="text-muted">Antes de empezar, responde esta breve prueba para conocer tu nivel inicial.</p>
-        <a href="{{ url_for('pretest') }}" class="btn btn-lecturatic btn-sm align-self-start">Realizar Pretest</a>
+        <p class="text-muted">Antes de empezar, responde esta breve prueba para identificar tus conocimientos previos sobre comprensión lectora y establecer un punto de partida para fortalecer tus habilidades durante el desarrollo de las actividades.</p>
+        <a href="{{ url_for('pretest') }}" class="btn btn-lecturatic btn-sm align-self-start">Realizar Prueba</a>
       {% endif %}
     </div>
   </div>
