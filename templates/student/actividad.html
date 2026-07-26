@@ -18,13 +18,13 @@
 
     {# ---------- OPCIÓN MÚLTIPLE ---------- #}
     {% if tipo == "opcion_multiple" %}
-      {% for p in actividad.preguntas %}
-      {% set qidx = loop.index0 %}
+    {% for p in actividad.preguntas %}
+    {% set pregunta_idx = loop.index0 %}
       <div class="mb-4">
         <p class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</p>
         {% for opcion in p.opciones %}
-        <label class="opcion-respuesta d-block" data-grupo="pregunta_{{ qidx }}">
-          <input type="radio" name="pregunta_{{ qidx }}" value="{{ loop.index0 }}" class="form-check-input me-2" required>
+        <label class="opcion-respuesta d-block" data-grupo="pregunta_{{ pregunta_idx }}">
+          <input type="radio" name="pregunta_{{ pregunta_idx }}" value="{{ loop.index0 }}" class="form-check-input me-2" required>
           {{ opcion }}
         </label>
         {% endfor %}
