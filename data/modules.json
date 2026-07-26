@@ -16,15 +16,32 @@
         "¿Qué crees que encontrará Camila siguiendo el mapa?"
       ],
       "palabras_nuevas": [
-        {"palabra": "cristalino", "significado": "Muy claro y transparente, como el cristal."},
-        {"palabra": "arroyo", "significado": "Corriente de agua pequeña y poco profunda."}
+        {
+          "palabra": "cristalino",
+          "significado": "Muy claro y transparente, como el cristal."
+        },
+        {
+          "palabra": "arroyo",
+          "significado": "Corriente de agua pequeña y poco profunda."
+        }
       ],
       "glosario": [
-        {"termino": "Personaje", "definicion": "Persona, animal o ser que participa en los hechos de una historia."},
-        {"termino": "Escenario", "definicion": "Lugar donde ocurren los hechos del relato."}
+        {
+          "termino": "Personaje",
+          "definicion": "Persona, animal o ser que participa en los hechos de una historia."
+        },
+        {
+          "termino": "Escenario",
+          "definicion": "Lugar donde ocurren los hechos del relato."
+        }
       ],
       "resumen": "Camila es una niña que explora el bosque cerca de su casa y encuentra el cuaderno de mapas de su abuelo, lo que inicia una aventura para descubrir los secretos del bosque.",
-      "mapa_conceptual": ["Camila (personaje)", "Bosque (escenario)", "Cuaderno del abuelo (objeto clave)", "Mapa (motivo de la aventura)"],
+      "mapa_conceptual": [
+        "Camila (personaje)",
+        "Bosque (escenario)",
+        "Cuaderno del abuelo (objeto clave)",
+        "Mapa (motivo de la aventura)"
+      ],
       "ejemplos": [
         {
           "titulo": "Ejemplo 1: Identificar personajes",
@@ -42,20 +59,68 @@
           "tipo": "opcion_multiple",
           "titulo": "Actividad 1: Preguntas de selección",
           "preguntas": [
-            {"pregunta1": "¿Cuántos años tiene Camila?", "opciones": ["Ocho", "Diez", "Doce", "Siete"], "correcta": 1},
-            {"pregunta2": "¿Qué encontró Camila bajo una roca?", "opciones": ["Un tesoro", "Un cuaderno", "Un animal", "Una carta"], "correcta": 1},
-            {"pregunta3": "¿A quién pertenecía el cuaderno?", "opciones": ["A su madre", "A su abuelo", "A su maestra", "A un amigo"], "correcta": 1},
-            {"pregunta4": "¿Qué iban a beber los conejos en el arroyo?", "opciones": ["Leche", "Agua", "Jugo", "Nada"], "correcta": 1}
+            {
+              "opciones": [
+                "Ocho",
+                "Diez",
+                "Doce",
+                "Siete"
+              ],
+              "correcta": 1,
+              "pregunta": "¿Cuántos años tiene Camila?"
+            },
+            {
+              "opciones": [
+                "Un tesoro",
+                "Un cuaderno",
+                "Un animal",
+                "Una carta"
+              ],
+              "correcta": 1,
+              "pregunta": "¿Qué encontró Camila bajo una roca?"
+            },
+            {
+              "opciones": [
+                "A su madre",
+                "A su abuelo",
+                "A su maestra",
+                "A un amigo"
+              ],
+              "correcta": 1,
+              "pregunta": "¿A quién pertenecía el cuaderno?"
+            },
+            {
+              "opciones": [
+                "Leche",
+                "Agua",
+                "Jugo",
+                "Nada"
+              ],
+              "correcta": 1,
+              "pregunta": "¿Qué iban a beber los conejos en el arroyo?"
+            }
           ]
         },
         {
           "tipo": "verdadero_falso",
           "titulo": "Actividad 2: Verdadero o Falso",
           "preguntas": [
-            {"pregunta": "Camila caminaba al bosque cada tarde después de sus tareas.", "correcta": true},
-            {"pregunta": "El cuaderno pertenecía a su hermano.", "correcta": false},
-            {"pregunta": "El bosque estaba detrás de la casa de Camila.", "correcta": true},
-            {"pregunta": "El abuelo dibujó mapas del bosque de joven.", "correcta": true}
+            {
+              "pregunta": "Camila caminaba al bosque cada tarde después de sus tareas.",
+              "correcta": true
+            },
+            {
+              "pregunta": "El cuaderno pertenecía a su hermano.",
+              "correcta": false
+            },
+            {
+              "pregunta": "El bosque estaba detrás de la casa de Camila.",
+              "correcta": true
+            },
+            {
+              "pregunta": "El abuelo dibujó mapas del bosque de joven.",
+              "correcta": true
+            }
           ]
         }
       ]
@@ -76,15 +141,32 @@
         "¿Qué pistas te dicen cómo se sentía Martín?"
       ],
       "palabras_nuevas": [
-        {"palabra": "agitada", "significado": "Que respira rápido, como después de correr."},
-        {"palabra": "portazo", "significado": "Golpe fuerte que se da al cerrar una puerta."}
+        {
+          "palabra": "agitada",
+          "significado": "Que respira rápido, como después de correr."
+        },
+        {
+          "palabra": "portazo",
+          "significado": "Golpe fuerte que se da al cerrar una puerta."
+        }
       ],
       "glosario": [
-        {"termino": "Inferir", "definicion": "Deducir algo que no está escrito, usando pistas del texto."},
-        {"termino": "Pista", "definicion": "Dato o detalle que ayuda a entender algo que no se dice directamente."}
+        {
+          "termino": "Inferir",
+          "definicion": "Deducir algo que no está escrito, usando pistas del texto."
+        },
+        {
+          "termino": "Pista",
+          "definicion": "Dato o detalle que ayuda a entender algo que no se dice directamente."
+        }
       ],
       "resumen": "Martín llega a casa muy alterado y triste porque perdió un partido de fútbol importante al fallar un penal, lo cual se deduce por sus acciones aunque el texto no lo dice desde el inicio.",
-      "mapa_conceptual": ["Mejillas rojas + respiración agitada (pistas)", "Portazo y silencio (pistas)", "Ojos hinchados (pista de llanto)", "Inferencia: Martín está triste y frustrado"],
+      "mapa_conceptual": [
+        "Mejillas rojas + respiración agitada (pistas)",
+        "Portazo y silencio (pistas)",
+        "Ojos hinchados (pista de llanto)",
+        "Inferencia: Martín está triste y frustrado"
+      ],
       "ejemplos": [
         {
           "titulo": "Ejemplo 1: Inferir un sentimiento",
@@ -102,20 +184,68 @@
           "tipo": "opcion_multiple",
           "titulo": "Actividad 1: Deducciones",
           "preguntas": [
-            {"pregunta": "¿Qué se puede inferir por las 'mejillas rojas' y la 'respiración agitada' de Martín?", "opciones": ["Que tenía frío", "Que había corrido o hecho esfuerzo físico", "Que estaba enfermo", "Que tenía hambre"], "correcta": 1},
-            {"pregunta": "¿Por qué crees que Martín no saludó al llegar?", "opciones": ["Porque estaba muy feliz", "Porque estaba enojado o triste por el partido", "Porque no vio a nadie", "Porque tenía prisa por comer"], "correcta": 1},
-            {"pregunta": "¿Qué indica que Martín lloró en su habitación?", "opciones": ["Que tenía sueño", "Sus ojos hinchados", "Que se había mojado", "Que estaba resfriado"], "correcta": 1},
-            {"pregunta": "¿Qué tipo de partido perdió Martín?", "opciones": ["De baloncesto", "De fútbol", "De tenis", "No se sabe"], "correcta": 1}
+            {
+              "pregunta": "¿Qué se puede inferir por las 'mejillas rojas' y la 'respiración agitada' de Martín?",
+              "opciones": [
+                "Que tenía frío",
+                "Que había corrido o hecho esfuerzo físico",
+                "Que estaba enfermo",
+                "Que tenía hambre"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Por qué crees que Martín no saludó al llegar?",
+              "opciones": [
+                "Porque estaba muy feliz",
+                "Porque estaba enojado o triste por el partido",
+                "Porque no vio a nadie",
+                "Porque tenía prisa por comer"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Qué indica que Martín lloró en su habitación?",
+              "opciones": [
+                "Que tenía sueño",
+                "Sus ojos hinchados",
+                "Que se había mojado",
+                "Que estaba resfriado"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Qué tipo de partido perdió Martín?",
+              "opciones": [
+                "De baloncesto",
+                "De fútbol",
+                "De tenis",
+                "No se sabe"
+              ],
+              "correcta": 1
+            }
           ]
         },
         {
           "tipo": "completar",
           "titulo": "Actividad 2: Completa las inferencias",
           "preguntas": [
-            {"pregunta": "Martín subió corriendo porque se sentía ____ por haber fallado el penal.", "respuesta": "triste"},
-            {"pregunta": "El portazo es una pista de que Martín estaba ____.", "respuesta": "molesto"},
-            {"pregunta": "Martín se disculpó porque comprendió que había actuado ____.", "respuesta": "mal"},
-            {"pregunta": "El partido era importante porque era el más ____ del año.", "respuesta": "importante"}
+            {
+              "pregunta": "Martín subió corriendo porque se sentía ____ por haber fallado el penal.",
+              "respuesta": "triste"
+            },
+            {
+              "pregunta": "El portazo es una pista de que Martín estaba ____.",
+              "respuesta": "molesto"
+            },
+            {
+              "pregunta": "Martín se disculpó porque comprendió que había actuado ____.",
+              "respuesta": "mal"
+            },
+            {
+              "pregunta": "El partido era importante porque era el más ____ del año.",
+              "respuesta": "importante"
+            }
           ]
         }
       ]
@@ -136,15 +266,32 @@
         "¿Por qué crees que la votación quedó tan pareja?"
       ],
       "palabras_nuevas": [
-        {"palabra": "económico", "significado": "Que cuesta poco dinero o ayuda a ahorrar."},
-        {"palabra": "pareja (votación)", "significado": "Cuando los resultados están casi iguales entre las opciones."}
+        {
+          "palabra": "económico",
+          "significado": "Que cuesta poco dinero o ayuda a ahorrar."
+        },
+        {
+          "palabra": "pareja (votación)",
+          "significado": "Cuando los resultados están casi iguales entre las opciones."
+        }
       ],
       "glosario": [
-        {"termino": "Opinión", "definicion": "Lo que una persona piensa o cree sobre un tema, y que puede ser diferente para cada persona."},
-        {"termino": "Argumento", "definicion": "Razón que se da para defender o sustentar una opinión."}
+        {
+          "termino": "Opinión",
+          "definicion": "Lo que una persona piensa o cree sobre un tema, y que puede ser diferente para cada persona."
+        },
+        {
+          "termino": "Argumento",
+          "definicion": "Razón que se da para defender o sustentar una opinión."
+        }
       ],
       "resumen": "En la escuela de Valeria se debate si usar uniforme deportivo todos los días; hay opiniones divididas y el director decide escuchar a los estudiantes antes de decidir.",
-      "mapa_conceptual": ["Propuesta del director", "Opinión a favor: comodidad", "Opinión en contra: sentirse ordenados", "Decisión: escuchar antes de decidir"],
+      "mapa_conceptual": [
+        "Propuesta del director",
+        "Opinión a favor: comodidad",
+        "Opinión en contra: sentirse ordenados",
+        "Decisión: escuchar antes de decidir"
+      ],
       "ejemplos": [
         {
           "titulo": "Ejemplo 1: Reconocer una opinión",
@@ -162,18 +309,58 @@
           "tipo": "opcion_multiple",
           "titulo": "Actividad 1: Pensamiento crítico",
           "preguntas": [
-            {"pregunta": "¿Cuál de las siguientes es una opinión, no un hecho?", "opciones": ["La escuela tiene un director", "El uniforme deportivo es más cómodo", "La votación quedó pareja", "Valeria estudia en esa escuela"], "correcta": 1},
-            {"pregunta": "¿Por qué es importante escuchar diferentes opiniones antes de decidir algo?", "opciones": ["Para perder tiempo", "Para tomar decisiones más justas y completas", "Porque es obligatorio", "No es importante"], "correcta": 1},
-            {"pregunta": "¿Qué palabra describe mejor la actitud del director al final del texto?", "opciones": ["Autoritario", "Dispuesto a escuchar", "Indiferente", "Enojado"], "correcta": 1},
-            {"pregunta": "¿Qué es un 'argumento'?", "opciones": ["Una pelea", "Una razón para defender una opinión", "Un cuento", "Un dibujo"], "correcta": 1}
+            {
+              "pregunta": "¿Cuál de las siguientes es una opinión, no un hecho?",
+              "opciones": [
+                "La escuela tiene un director",
+                "El uniforme deportivo es más cómodo",
+                "La votación quedó pareja",
+                "Valeria estudia en esa escuela"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Por qué es importante escuchar diferentes opiniones antes de decidir algo?",
+              "opciones": [
+                "Para perder tiempo",
+                "Para tomar decisiones más justas y completas",
+                "Porque es obligatorio",
+                "No es importante"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Qué palabra describe mejor la actitud del director al final del texto?",
+              "opciones": [
+                "Autoritario",
+                "Dispuesto a escuchar",
+                "Indiferente",
+                "Enojado"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Qué es un 'argumento'?",
+              "opciones": [
+                "Una pelea",
+                "Una razón para defender una opinión",
+                "Un cuento",
+                "Un dibujo"
+              ],
+              "correcta": 1
+            }
           ]
         },
         {
           "tipo": "pregunta_abierta",
           "titulo": "Actividad 2: Da tu opinión",
           "preguntas": [
-            {"pregunta": "¿Estás de acuerdo con usar uniforme deportivo todos los días? Explica por qué en dos o tres oraciones."},
-            {"pregunta": "Si fueras el director, ¿qué decisión tomarías y qué le dirías a los estudiantes para explicarla?"}
+            {
+              "pregunta": "¿Estás de acuerdo con usar uniforme deportivo todos los días? Explica por qué en dos o tres oraciones."
+            },
+            {
+              "pregunta": "Si fueras el director, ¿qué decisión tomarías y qué le dirías a los estudiantes para explicarla?"
+            }
           ]
         }
       ]
@@ -194,16 +381,37 @@
         "¿Por qué crees que es útil para el pulpo cambiar de color?"
       ],
       "palabras_nuevas": [
-        {"palabra": "ventosas", "significado": "Pequeños círculos que usan los pulpos para sujetarse a las superficies."},
-        {"palabra": "camuflarse", "significado": "Cambiar de apariencia para mezclarse con el entorno y no ser visto."},
-        {"palabra": "depredadores", "significado": "Animales que cazan a otros animales para comer."}
+        {
+          "palabra": "ventosas",
+          "significado": "Pequeños círculos que usan los pulpos para sujetarse a las superficies."
+        },
+        {
+          "palabra": "camuflarse",
+          "significado": "Cambiar de apariencia para mezclarse con el entorno y no ser visto."
+        },
+        {
+          "palabra": "depredadores",
+          "significado": "Animales que cazan a otros animales para comer."
+        }
       ],
       "glosario": [
-        {"termino": "Texto informativo", "definicion": "Tipo de texto que explica datos y hechos reales sobre un tema."},
-        {"termino": "Camuflaje", "definicion": "Capacidad de un animal para parecerse a su entorno y pasar desapercibido."}
+        {
+          "termino": "Texto informativo",
+          "definicion": "Tipo de texto que explica datos y hechos reales sobre un tema."
+        },
+        {
+          "termino": "Camuflaje",
+          "definicion": "Capacidad de un animal para parecerse a su entorno y pasar desapercibido."
+        }
       ],
       "resumen": "El texto explica las características sorprendentes del pulpo: sus ocho brazos con ventosas, su capacidad de camuflaje y su inteligencia, a pesar de su corta vida.",
-      "mapa_conceptual": ["Pulpo", "Ocho brazos con ventosas", "Camuflaje (cambia de color)", "Inteligencia (resuelve problemas)", "Vida corta (1-2 años)"],
+      "mapa_conceptual": [
+        "Pulpo",
+        "Ocho brazos con ventosas",
+        "Camuflaje (cambia de color)",
+        "Inteligencia (resuelve problemas)",
+        "Vida corta (1-2 años)"
+      ],
       "ejemplos": [
         {
           "titulo": "Ejemplo 1: Dato explícito",
@@ -221,20 +429,44 @@
           "tipo": "relacionar",
           "titulo": "Actividad 1: Relaciona las columnas",
           "pares": [
-            {"izquierda": "Ventosas", "derecha": "Le permiten sujetar objetos"},
-            {"izquierda": "Camuflaje", "derecha": "Cambiar de color para esconderse"},
-            {"izquierda": "Inteligencia", "derecha": "Resolver laberintos y abrir frascos"},
-            {"izquierda": "Vida corta", "derecha": "Vive entre uno y dos años"}
+            {
+              "izquierda": "Ventosas",
+              "derecha": "Le permiten sujetar objetos"
+            },
+            {
+              "izquierda": "Camuflaje",
+              "derecha": "Cambiar de color para esconderse"
+            },
+            {
+              "izquierda": "Inteligencia",
+              "derecha": "Resolver laberintos y abrir frascos"
+            },
+            {
+              "izquierda": "Vida corta",
+              "derecha": "Vive entre uno y dos años"
+            }
           ]
         },
         {
           "tipo": "verdadero_falso",
           "titulo": "Actividad 2: Verdadero o Falso",
           "preguntas": [
-            {"pregunta": "El pulpo tiene seis brazos.", "correcta": false},
-            {"pregunta": "El pulpo puede cambiar de color para camuflarse.", "correcta": true},
-            {"pregunta": "Los científicos consideran al pulpo un animal inteligente.", "correcta": true},
-            {"pregunta": "El pulpo vive más de diez años.", "correcta": false}
+            {
+              "pregunta": "El pulpo tiene seis brazos.",
+              "correcta": false
+            },
+            {
+              "pregunta": "El pulpo puede cambiar de color para camuflarse.",
+              "correcta": true
+            },
+            {
+              "pregunta": "Los científicos consideran al pulpo un animal inteligente.",
+              "correcta": true
+            },
+            {
+              "pregunta": "El pulpo vive más de diez años.",
+              "correcta": false
+            }
           ]
         }
       ]
@@ -255,15 +487,32 @@
         "¿Por qué crees que Sofía recordó las palabras de su abuela en ese momento?"
       ],
       "palabras_nuevas": [
-        {"palabra": "identificación", "significado": "Documento que dice quién es una persona."},
-        {"palabra": "agradecer", "significado": "Expresar gratitud por algo que alguien hizo."}
+        {
+          "palabra": "identificación",
+          "significado": "Documento que dice quién es una persona."
+        },
+        {
+          "palabra": "agradecer",
+          "significado": "Expresar gratitud por algo que alguien hizo."
+        }
       ],
       "glosario": [
-        {"termino": "Dilema", "definicion": "Situación en la que hay que elegir entre dos opciones, generalmente difíciles."},
-        {"termino": "Valores", "definicion": "Principios que guían el comportamiento de una persona, como la honestidad."}
+        {
+          "termino": "Dilema",
+          "definicion": "Situación en la que hay que elegir entre dos opciones, generalmente difíciles."
+        },
+        {
+          "termino": "Valores",
+          "definicion": "Principios que guían el comportamiento de una persona, como la honestidad."
+        }
       ],
       "resumen": "Sofía encuentra una billetera perdida y, recordando las palabras de su abuela, decide entregarla a la policía en vez de quedarse con el dinero. Su honestidad es recompensada.",
-      "mapa_conceptual": ["Sofía encuentra billetera (literal)", "Recuerda a su abuela (inferencial: por qué actúa así)", "Decide ser honesta (crítico: valor de la honestidad)", "Consecuencia: agradecimiento y recompensa"],
+      "mapa_conceptual": [
+        "Sofía encuentra billetera (literal)",
+        "Recuerda a su abuela (inferencial: por qué actúa así)",
+        "Decide ser honesta (crítico: valor de la honestidad)",
+        "Consecuencia: agradecimiento y recompensa"
+      ],
       "ejemplos": [
         {
           "titulo": "Ejemplo 1: Nivel literal",
@@ -281,10 +530,46 @@
           "tipo": "opcion_multiple",
           "titulo": "Actividad 1: Los tres niveles",
           "preguntas": [
-            {"pregunta": "(Literal) ¿Qué había dentro de la billetera?", "opciones": ["Solo dinero", "Dinero y una identificación", "Fotos", "Nada"], "correcta": 1},
-            {"pregunta": "(Inferencial) ¿Por qué Sofía decidió no quedarse con el dinero?", "opciones": ["Porque tenía miedo", "Porque recordó el consejo de su abuela sobre la honestidad", "Porque no le gustaba el dinero", "Porque alguien la vio"], "correcta": 1},
-            {"pregunta": "(Crítico) ¿Qué valor demuestra principalmente la actitud de Sofía?", "opciones": ["Egoísmo", "Honestidad", "Timidez", "Curiosidad"], "correcta": 1},
-            {"pregunta": "(Literal) ¿A dónde llevó Sofía la billetera?", "opciones": ["A su casa", "A la estación de policía", "A la escuela", "A un amigo"], "correcta": 1}
+            {
+              "pregunta": "(Literal) ¿Qué había dentro de la billetera?",
+              "opciones": [
+                "Solo dinero",
+                "Dinero y una identificación",
+                "Fotos",
+                "Nada"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "(Inferencial) ¿Por qué Sofía decidió no quedarse con el dinero?",
+              "opciones": [
+                "Porque tenía miedo",
+                "Porque recordó el consejo de su abuela sobre la honestidad",
+                "Porque no le gustaba el dinero",
+                "Porque alguien la vio"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "(Crítico) ¿Qué valor demuestra principalmente la actitud de Sofía?",
+              "opciones": [
+                "Egoísmo",
+                "Honestidad",
+                "Timidez",
+                "Curiosidad"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "(Literal) ¿A dónde llevó Sofía la billetera?",
+              "opciones": [
+                "A su casa",
+                "A la estación de policía",
+                "A la escuela",
+                "A un amigo"
+              ],
+              "correcta": 1
+            }
           ]
         },
         {
@@ -306,11 +591,56 @@
     "instrucciones": "Antes de comenzar, responde estas preguntas para conocer tu nivel inicial de comprensión lectora.",
     "texto_lectura": "Lucas tenía un perro llamado Toby que lo esperaba todos los días en la puerta de la casa cuando volvía de la escuela. Un día, Lucas llegó y Toby no estaba en la puerta. Buscó por todo el jardín y no lo encontró. Se sentó en las escaleras, muy preocupado, hasta que escuchó un ladrido que venía desde el patio trasero, donde Toby jugaba felizmente con tres cachorros recién nacidos.",
     "preguntas": [
-      {"pregunta": "(Literal) ¿Cómo se llamaba el perro de Lucas?", "opciones": ["Rex", "Toby", "Max", "Rocky"], "correcta": 1},
-      {"pregunta": "(Literal) ¿Dónde encontró Lucas a Toby finalmente?", "opciones": ["En la escuela", "En el jardín delantero", "En el patio trasero", "En la calle"], "correcta": 2},
-      {"pregunta": "(Inferencial) ¿Por qué Lucas se sentó preocupado en las escaleras?", "opciones": ["Porque estaba cansado", "Porque no encontraba a Toby", "Porque tenía hambre", "Porque llovía"], "correcta": 1},
-      {"pregunta": "(Inferencial) ¿Qué se puede deducir al final del texto?", "opciones": ["Que Toby se había perdido para siempre", "Que Toby había tenido cachorros o los estaba cuidando", "Que Lucas se mudó de casa", "Que Toby estaba enfermo"], "correcta": 1},
-      {"pregunta": "(Crítico) ¿Qué sentimiento crees que tuvo Lucas al ver a Toby con los cachorros?", "opciones": ["Tristeza", "Alivio y alegría", "Enojo", "Indiferencia"], "correcta": 1}
+      {
+        "pregunta": "(Literal) ¿Cómo se llamaba el perro de Lucas?",
+        "opciones": [
+          "Rex",
+          "Toby",
+          "Max",
+          "Rocky"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Literal) ¿Dónde encontró Lucas a Toby finalmente?",
+        "opciones": [
+          "En la escuela",
+          "En el jardín delantero",
+          "En el patio trasero",
+          "En la calle"
+        ],
+        "correcta": 2
+      },
+      {
+        "pregunta": "(Inferencial) ¿Por qué Lucas se sentó preocupado en las escaleras?",
+        "opciones": [
+          "Porque estaba cansado",
+          "Porque no encontraba a Toby",
+          "Porque tenía hambre",
+          "Porque llovía"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Inferencial) ¿Qué se puede deducir al final del texto?",
+        "opciones": [
+          "Que Toby se había perdido para siempre",
+          "Que Toby había tenido cachorros o los estaba cuidando",
+          "Que Lucas se mudó de casa",
+          "Que Toby estaba enfermo"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Crítico) ¿Qué sentimiento crees que tuvo Lucas al ver a Toby con los cachorros?",
+        "opciones": [
+          "Tristeza",
+          "Alivio y alegría",
+          "Enojo",
+          "Indiferencia"
+        ],
+        "correcta": 1
+      }
     ]
   },
   "postest": {
@@ -318,11 +648,56 @@
     "instrucciones": "Has terminado todos los módulos. Responde estas preguntas para ver cuánto has avanzado.",
     "texto_lectura": "En la granja de don Ernesto, las gallinas ponían menos huevos de lo normal. Don Ernesto estaba preocupado porque necesitaba vender los huevos para pagar las cuentas del mes. Su nieta, Isabela, notó que las gallinas estaban asustadas cada vez que el perro de la granja se acercaba corriendo al gallinero. Isabela le sugirió a su abuelo poner una cerca alrededor del gallinero para que el perro no las asustara. Después de instalar la cerca, las gallinas volvieron a poner huevos con normalidad.",
     "preguntas": [
-      {"pregunta": "(Literal) ¿Qué problema tenía don Ernesto?", "opciones": ["Las gallinas se enfermaron", "Las gallinas ponían menos huevos", "Se le perdió el perro", "No tenía dinero para comida"], "correcta": 1},
-      {"pregunta": "(Literal) ¿Quién notó que el perro asustaba a las gallinas?", "opciones": ["Don Ernesto", "Isabela", "Un vecino", "Nadie"], "correcta": 1},
-      {"pregunta": "(Inferencial) ¿Por qué las gallinas dejaron de poner huevos con normalidad?", "opciones": ["Por el frío", "Por el miedo que les causaba el perro", "Porque no tenían comida", "Porque eran muy viejas"], "correcta": 1},
-      {"pregunta": "(Inferencial) ¿Qué solucionó el problema de la granja?", "opciones": ["Vender las gallinas", "Poner una cerca alrededor del gallinero", "Regalar el perro", "Comprar más gallinas"], "correcta": 1},
-      {"pregunta": "(Crítico) ¿Qué cualidad demostró Isabela al observar y proponer una solución?", "opciones": ["Pereza", "Observación e ingenio", "Miedo", "Descuido"], "correcta": 1}
+      {
+        "pregunta": "(Literal) ¿Qué problema tenía don Ernesto?",
+        "opciones": [
+          "Las gallinas se enfermaron",
+          "Las gallinas ponían menos huevos",
+          "Se le perdió el perro",
+          "No tenía dinero para comida"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Literal) ¿Quién notó que el perro asustaba a las gallinas?",
+        "opciones": [
+          "Don Ernesto",
+          "Isabela",
+          "Un vecino",
+          "Nadie"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Inferencial) ¿Por qué las gallinas dejaron de poner huevos con normalidad?",
+        "opciones": [
+          "Por el frío",
+          "Por el miedo que les causaba el perro",
+          "Porque no tenían comida",
+          "Porque eran muy viejas"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Inferencial) ¿Qué solucionó el problema de la granja?",
+        "opciones": [
+          "Vender las gallinas",
+          "Poner una cerca alrededor del gallinero",
+          "Regalar el perro",
+          "Comprar más gallinas"
+        ],
+        "correcta": 1
+      },
+      {
+        "pregunta": "(Crítico) ¿Qué cualidad demostró Isabela al observar y proponer una solución?",
+        "opciones": [
+          "Pereza",
+          "Observación e ingenio",
+          "Miedo",
+          "Descuido"
+        ],
+        "correcta": 1
+      }
     ]
   }
 }
