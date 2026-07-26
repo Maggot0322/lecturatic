@@ -226,11 +226,9 @@ def seed_modulos_y_actividades():
     progreso (bloqueado/desbloqueado) para cada estudiante.
     El primer módulo siempre queda desbloqueado por defecto.
     """
-  with open(MODULES_JSON_PATH, "r", encoding="utf-8") as f:
-    contenido = f.read()
-    print("===== CONTENIDO JSON =====")
-    print(contenido[:500])
-    data = json.loads(contenido)
+    with open(MODULES_JSON_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
     conn = get_db()
     cur = conn.cursor()
 
