@@ -12,11 +12,12 @@
 
   <form method="POST">
     {% for p in prueba.preguntas %}
+    {% set qidx = loop.index0 %}
     <div class="mb-4">
       <p class="fw-bold">{{ loop.index }}. {{ p.pregunta }}</p>
       {% for opcion in p.opciones %}
-      <label class="opcion-respuesta d-block" data-grupo="pregunta_{{ loop.index0 }}">
-        <input type="radio" name="pregunta_{{ loop.index0 }}" value="{{ loop.index0 }}" class="form-check-input me-2" required>
+      <label class="opcion-respuesta d-block" data-grupo="pregunta_{{ qidx }}">
+        <input type="radio" name="pregunta_{{ qidx }}" value="{{ loop.index0 }}" class="form-check-input me-2" required>
         {{ opcion }}
       </label>
       {% endfor %}
