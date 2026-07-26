@@ -21,6 +21,7 @@ from reportlab.lib.units import cm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.colors import HexColor
 
 
 ENCABEZADOS = ["Nombre", "Usuario", "Promedio General", "Módulos Aprobados",
@@ -95,41 +96,195 @@ def generar_pdf(filas, titulo="Reporte General de Estudiantes - LECTURATIC"):
     buffer.seek(0)
     return buffer.getvalue()
 
-
 def generar_certificado_pdf(nombre_estudiante, promedio_general):
     """
-    Genera un certificado de finalización en PDF para un estudiante
-    que aprobó todos los módulos de LECTURATIC.
+    Genera un certificado de logro más atractivo para estudiantes
+    de quinto grado de primaria.
     """
+
     buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=landscape(letter))
+
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=landscape(letter),
+        rightMargin=1.2*cm,
+        leftMargin=1.2*cm,
+        topMargin=1.2*cm,
+        bottomMargin=1.2*cm
+    )
+
     styles = getSampleStyleSheet()
 
-    estilo_titulo = ParagraphStyle("titulo_cert", parent=styles["Title"], fontSize=32,
-                                    alignment=TA_CENTER, textColor=colors.HexColor("#2E7D32"))
-    estilo_sub = ParagraphStyle("sub_cert", parent=styles["Normal"], fontSize=16,
-                                 alignment=TA_CENTER, spaceAfter=20)
-    estilo_nombre = ParagraphStyle("nombre_cert", parent=styles["Title"], fontSize=26,
-                                    alignment=TA_CENTER, textColor=colors.HexColor("#1565C0"))
-    estilo_texto = ParagraphStyle("texto_cert", parent=styles["Normal"], fontSize=13,
-                                   alignment=TA_CENTER, spaceAfter=10)
+    titulo = ParagraphStyle(
+        "Titulo",
+        parent=styles["Heading1"],
+        alignment=TA_CENTER,
+        fontSize=30,
+        leading=34,
+        textColor=HexColor("#2E7D32"),
+        spaceAfter=10
+    )
 
-    elementos = [
-        Spacer(1, 1.5 * cm),
-        Paragraph("CERTIFICADO DE LOGRO", estilo_titulo),
-        Paragraph("Plataforma LECTURATIC — Entorno Virtual de Aprendizaje", estilo_sub),
-        Spacer(1, 1 * cm),
-        Paragraph("Se otorga el presente certificado a:", estilo_texto),
-        Spacer(1, 0.3 * cm),
-        Paragraph(nombre_estudiante, estilo_nombre),
-        Spacer(1, 0.6 * cm),
-        Paragraph("por haber completado satisfactoriamente los cinco módulos de comprensión "
-                  "lectora (nivel literal, inferencial y crítico) de la plataforma LECTURATIC, "
-                  f"con un promedio general de {promedio_general}.", estilo_texto),
-        Spacer(1, 1.2 * cm),
-        Paragraph(f"Fecha de emisión: {datetime.now().strftime('%d de %B de %Y')}", estilo_texto),
-    ]
+    subtitulo = ParagraphStyle(
+        "Subtitulo",
+        parent=styles["Normal"],
+        alignment=TA_CENTER,
+        fontSize=17,
+        textColor=HexColor("#1565C0")
+    )
+
+    nombre = ParagraphStyle(
+        "Nombre",
+        parent=styles["Heading1"],
+        alignment=TA_CENTER,
+        fontSize=28,
+        leading=32,
+        textColor=HexColor("#0D47A1"),
+        spaceAfter=15
+    )
+
+    texto = ParagraphStyle(
+        "Texto",
+        parent=styles["BodyText"],
+        alignment=TA_CENTER,
+        fontSize=14,
+        leading=22
+    )
+
+    firma = ParagraphStyle(
+        "Firma",
+        parent=styles["Normal"],
+        alignment=TA_CENTER,
+        fontSize=12
+    )
+
+    # Medalla según promedio
+
+    if promedio_general >= 4.8:
+        medalla = "✺ MEDALLA DE ORO"
+    elif promedio_general >= 4:
+        medalla = "❖ MEDALLA DE PLATA"
+    else:
+        medalla = "✵ MEDALLA DE BRONCE"
+
+    elementos = []
+
+    # Marco superior
+
+    tabla = Table([[""]], colWidths=25*cm, rowHeights=0.45*cm)
+
+    tabla.setStyle(TableStyle([
+        ("BACKGROUND",(0,0),(-1,-1),HexColor("#2E7D32")),
+        ("BOX",(0,0),(-1,-1),3,HexColor("#1565C0"))
+    ]))
+
+    elementos.append(tabla)
+
+    elementos.append(Spacer(1,0.5*cm))
+
+    elementos.append(Paragraph("🏆 CERTIFICADO DE LOGRO 🏆",titulo))
+
+    elementos.append(
+        Paragraph(
+            "LECTURATIC - Plataforma para el Fortalecimiento de la Comprensión Lectora",
+            subtitulo
+        )
+    )
+
+    elementos.append(Spacer(1,0.8*cm))
+
+    elementos.append(
+        Paragraph(
+            "<b>Este certificado se otorga a:</b>",
+            texto
+        )
+    )
+
+    elementos.append(Spacer(1,0.3*cm))
+
+    elementos.append(
+        Paragraph(
+            f"<b>{nombre_estudiante.upper()}</b>",
+            nombre
+        )
+    )
+
+    elementos.append(Spacer(0,0*cm))
+
+    mensaje = f"""
+    Por haber culminado satisfactoriamente los cinco módulos (5) del Entorno
+    Virtual de Aprendizaje <b>LECTURATIC</b>, demostrando habilidades de
+    comprensión lectora en los niveles <b>Literal</b>,
+    <b>Inferencial</b> y <b>Crítico</b>.
+
+    <br/><br/>
+
+    <font color="#1565C0"><b>Promedio Final: {promedio_general} / 5.0</b></font>
+
+    <br/><br/>
+
+    <font color="#C79200"><b>{medalla}</b></font>
+
+    <br/><br/>
+
+    ✪ ¡Felicitaciones! ✪
+
+    <br/>
+
+    Tu dedicación, esfuerzo y amor por la lectura te permitirán
+    descubrir nuevos conocimientos y alcanzar grandes sueños.
+    """
+
+    elementos.append(Paragraph(mensaje,texto))
+
+    elementos.append(Spacer(0.1,0.1*cm))
+
+    elementos.append(
+        Paragraph(
+            f"<b>Fecha de emisión:</b> {datetime.now().strftime('%d de %B de %Y')}",
+            texto
+        )
+    )
+
+    elementos.append(Spacer(0,0.0*cm))
+
+    firmas = Table(
+        [[
+            "",
+            ""
+        ],
+        [
+            "",
+            ""
+        ]],
+        colWidths=[0*cm,0*cm]
+    )
+
+    firmas.setStyle(TableStyle([
+        ("ALIGN",(0,0),(-1,-1),"CENTER"),
+        ("FONTSIZE",(0,0),(-1,-1),12),
+        ("TOPPADDING",(0,0),(-1,-1),10)
+    ]))
+
+    elementos.append(firmas)
+
+    elementos.append(Spacer(0,0*cm))
+
+    pie = Table([["★★★★★   LECTURATIC   ★★★★★"]], colWidths=25*cm)
+
+    pie.setStyle(TableStyle([
+        ("BACKGROUND",(0,0),(-1,-1),HexColor("#1565C0")),
+        ("TEXTCOLOR",(0,0),(-1,-1),colors.white),
+        ("ALIGN",(0,0),(-1,-1),"CENTER"),
+        ("FONTSIZE",(0,0),(-1,-1),14),
+        ("BOTTOMPADDING",(0,0),(-1,-1),8),
+        ("TOPPADDING",(0,0),(-1,-1),8)
+    ]))
+
+    elementos.append(pie)
 
     doc.build(elementos)
+
     buffer.seek(0)
+
     return buffer.getvalue()
