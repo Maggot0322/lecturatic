@@ -199,10 +199,6 @@ def seed_usuarios():
     usuarios_iniciales = [
         ("admin", "Administrador General", "admin123", "admin"),
         ("estudiante1", "Estudiante Uno", "12345", "estudiante"),
-        ("estudiante2", "Estudiante Dos", "12345", "estudiante"),
-        ("estudiante3", "Estudiante Tres", "12345", "estudiante"),
-        ("estudiante4", "Estudiante Cuatro", "12345", "estudiante"),
-        ("estudiante5", "Estudiante Cinco", "12345", "estudiante"),
     ]
 
     for usuario, nombre, password, rol in usuarios_iniciales:
